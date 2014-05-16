@@ -1,7 +1,7 @@
 Change Log
 ==========
 
-Version 0.0.0 *(2013-06-20)*
+Version 0.0.0 *(2014-01-20)*
 ----------------------------
 
-Initial commit until we release then we can add some changes.
+Initial creation of the Change Log.
