@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+	<ImageView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/iv_icon"
+			android:layout_centerHorizontal="true"
+			android:src="@drawable/gravatar_icon"
+			android:layout_marginTop="@dimen/login_top_margins"
+			android:contentDescription="@string/app_name"
+			android:cropToPadding="false"
+			android:baselineAlignBottom="false"/>
+
+	<LinearLayout
+			android:orientation="horizontal"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:focusableInTouchMode="false"
+			android:id="@+id/name"
+			android:layout_below="@+id/iv_icon"
+			android:layout_marginLeft="@dimen/login_side_margins"
+			android:layout_marginRight="@dimen/login_side_margins"
+			android:layout_marginTop="@dimen/login_top_margins">
+
+		<EditText
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/et_first_name"
+				android:layout_below="@+id/iv_icon"
+				android:hint="@string/first_name"
+				android:layout_weight=".5"
+				android:layout_marginRight="5dp"/>
+
+		<EditText
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/et_last_name"
+				android:layout_toRightOf="@+id/et_first_name"
+				android:hint="@string/last_name"
+				android:layout_below="@+id/iv_icon"
+				android:layout_weight=".5"
+				android:layout_marginLeft="5dp"/>
+	</LinearLayout>
+
+	<EditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="@string/email_address"
+			android:id="@+id/et_email_address"
+			android:layout_centerHorizontal="true"
+			android:layout_marginLeft="@dimen/login_side_margins"
+			android:layout_marginRight="@dimen/login_side_margins"
+			android:layout_marginTop="@dimen/login_top_margins"
+			android:layout_below="@+id/name"/>
+
+	<EditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="@string/password"
+			android:layout_below="@id/et_email_address"
+			android:id="@+id/et_password"
+			android:layout_marginLeft="@dimen/login_side_margins"
+			android:layout_marginRight="@dimen/login_side_margins"
+			android:layout_marginTop="@dimen/login_top_margins"/>
+
+	<CheckBox
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="I accept the Terms of Use and Privacy Policy"
+			android:id="@+id/cb_terms"
+			android:layout_below="@+id/et_password"
+			android:layout_marginLeft="@dimen/login_side_margins"
+			android:layout_marginRight="@dimen/login_side_margins"
+			android:checked="false"
+			android:layout_marginTop="@dimen/login_top_margins"/>
+
+	<Button
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/register"
+			android:id="@+id/b_register"
+			android:layout_below="@+id/cb_terms"
+			android:layout_centerHorizontal="true"
+			android:layout_marginTop="@dimen/login_top_margins"/>
+</RelativeLayout>
