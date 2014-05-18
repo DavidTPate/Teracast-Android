@@ -1,5 +1,6 @@
 package com.davidtpate.teracast.model;
 
+import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import com.google.gson.Gson;
@@ -7,6 +8,8 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class PodcastList implements Parcelable {
     public static final Type                            podcastMapType = new TypeToken<LinkedHashMap<String, Podcast>>() {}.getType();
@@ -27,14 +30,21 @@ public class PodcastList implements Parcelable {
     }
 
     public static PodcastList fromJson(String json) {
-        PodcastList newPodcastList = new PodcastList();
-        newPodcastList.podcastMap = new Gson().fromJson(json, podcastMapType);
-        return newPodcastList;
+        PodcastList podcastList = new PodcastList();
+        podcastList.podcastMap = new Gson().fromJson(json, podcastMapType);
+        return podcastList;
     }
 
     private PodcastList(Parcel in) {
-        //TODO: Do this.
-        //podcastMap = in.readParcelable(Podcast.class.getClassLoader());
+        Bundle bundle = in.readBundle();
+        Set<String> keySet = bundle.keySet();
+        for (String key : keySet) {
+            if (podcastMap == null) {
+                podcastMap = new LinkedHashMap<String, Podcast>();
+            }
+
+            podcastMap.put(key, bundle.<Podcast>getParcelable(key));
+        }
     }
 
     public int describeContents() {
@@ -42,8 +52,11 @@ public class PodcastList implements Parcelable {
     }
 
     public void writeToParcel(Parcel out, int flags) {
-        //TODO: Do this.
-        //out.writeParcelable(podcastMap, flags);
+        Bundle bundle = new Bundle();
+        for (Map.Entry<String, Podcast> podcastEntry : podcastMap.entrySet()) {
+            bundle.putParcelable(podcastEntry.getKey(), podcastEntry.getValue());
+        }
+        out.writeBundle(bundle);
     }
 
     public HashMap<String, Podcast> getPodcastMap() {

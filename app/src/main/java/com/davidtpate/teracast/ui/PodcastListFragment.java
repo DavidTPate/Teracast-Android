@@ -5,8 +5,9 @@ import android.app.ListFragment;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
-import com.davidtpate.teracast.BaseApplication;
+import com.davidtpate.teracast.Constants;
 import com.davidtpate.teracast.adapter.PodcastAdapter;
+import com.davidtpate.teracast.model.PodcastList;
 
 /**
  * A fragment representing a list of Items.
@@ -16,24 +17,15 @@ import com.davidtpate.teracast.adapter.PodcastAdapter;
  * interface.
  */
 public class PodcastListFragment extends ListFragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private PodcastList mPodcastList;
 
     private OnFragmentInteractionListener mListener;
 
     // TODO: Rename and change types of parameters
-    public static PodcastListFragment newInstance(String param1, String param2) {
+    public static PodcastListFragment newInstance(PodcastList podcastList) {
         PodcastListFragment fragment = new PodcastListFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putParcelable(Constants.Extra.EXTRA_PODCAST_LIST, podcastList);
         fragment.setArguments(args);
         return fragment;
     }
@@ -50,11 +42,10 @@ public class PodcastListFragment extends ListFragment {
         super.onCreate(savedInstanceState);
 
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            mPodcastList = getArguments().getParcelable(Constants.Extra.EXTRA_PODCAST_LIST);
         }
 
-        setListAdapter(new PodcastAdapter(getActivity(), BaseApplication.getInstance().getPodcastList()));
+        setListAdapter(new PodcastAdapter(getActivity(), mPodcastList));
     }
 
 

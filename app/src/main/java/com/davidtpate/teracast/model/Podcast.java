@@ -1,9 +1,13 @@
 package com.davidtpate.teracast.model;
 
+import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class Podcast implements Parcelable {
     public static final Parcelable.Creator<Podcast> CREATOR = new Parcelable.Creator<Podcast>() {
@@ -38,12 +42,29 @@ public class Podcast implements Parcelable {
         logo = in.readString();
         description = in.readString();
         summary = in.readString();
-        //TODO: Test this.
-        //keywords = in.readArrayList(String.class.getClassLoader());
+
+        Bundle keywordBundle = in.readBundle();
+        Set<String> keywordKeySet = keywordBundle.keySet();
+        for (String key : keywordKeySet) {
+            if (keywords == null) {
+                keywords = new HashMap<String, String>();
+            }
+
+            keywords.put(key, keywordBundle.getString(key));
+        }
+
         language = in.readString();
         copyright = in.readString();
-        //TODO: Implement this.
-        //categories = in.readArrayList(String.class.getClassLoader());
+
+        Bundle categoryBundle = in.readBundle();
+        Set<String> categoryKeySet = categoryBundle.keySet();
+        for (String key : categoryKeySet) {
+            if (categories == null) {
+                categories = new HashMap<String, String>();
+            }
+
+            categories.put(key, categoryBundle.getString(key));
+        }
     }
 
     public int describeContents() {
@@ -59,12 +80,21 @@ public class Podcast implements Parcelable {
         out.writeString(logo);
         out.writeString(description);
         out.writeString(summary);
-        //TODO: Test this.
-        //out.writeList(keywords);
+
+        Bundle keywordBundle = new Bundle();
+        for (Map.Entry<String, String> keywordEntry : keywords.entrySet()) {
+            keywordBundle.putString(keywordEntry.getKey(), keywordEntry.getValue());
+        }
+        out.writeBundle(keywordBundle);
+
         out.writeString(language);
         out.writeString(copyright);
-        //TODO: Implement this.
-        //out.writeList(categories);
+
+        Bundle categoryBundle = new Bundle();
+        for (Map.Entry<String, String> categoryEntry : keywords.entrySet()) {
+            categoryBundle.putString(categoryEntry.getKey(), categoryEntry.getValue());
+        }
+        out.writeBundle(categoryBundle);
     }
 
     public String getTitle() {

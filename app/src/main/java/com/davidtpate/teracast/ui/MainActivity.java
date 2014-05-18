@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import com.davidtpate.teracast.BaseApplication;
 import com.davidtpate.teracast.R;
 import com.davidtpate.teracast.model.Podcast;
 import com.davidtpate.teracast.model.PodcastList;
@@ -138,18 +139,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener, Pod
         @Override
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            Locale l = Locale.getDefault();
-            String section = "";
-            switch (position) {
-                case 0:
-                    section = getString(R.string.title_section1).toUpperCase(l);
-                case 1:
-                    section = getString(R.string.title_section2).toUpperCase(l);
-                case 2:
-                    section = getString(R.string.title_section3).toUpperCase(l);
-            }
-            return PodcastListFragment.newInstance(section, section);
+            return PodcastListFragment.newInstance(BaseApplication.getInstance().getPodcastList());
         }
 
         @Override
