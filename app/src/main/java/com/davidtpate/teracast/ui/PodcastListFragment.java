@@ -1,15 +1,12 @@
 package com.davidtpate.teracast.ui;
 
 import android.app.Activity;
-import android.os.Bundle;
 import android.app.ListFragment;
+import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 import com.davidtpate.teracast.BaseApplication;
 import com.davidtpate.teracast.adapter.PodcastAdapter;
-import com.davidtpate.teracast.ui.dummy.DummyContent;
 
 /**
  * A fragment representing a list of Items.
@@ -86,7 +83,7 @@ public class PodcastListFragment extends ListFragment {
         if (null != mListener) {
             // Notify the active callbacks interface (the activity, if the
             // fragment is attached to one) that an item has been selected.
-            mListener.onFragmentInteraction(DummyContent.ITEMS.get(position).id);
+            //mListener.onFragmentInteraction(DummyContent.ITEMS.get(position).id);
         }
     }
 

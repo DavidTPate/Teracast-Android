@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -118,14 +118,12 @@ public class PodcastAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        @InjectView(R.id.ib_icon)
-        ImageButton icon;
-        @InjectView(R.id.ib_play)
-        ImageButton play;
+        @InjectView(R.id.iv_icon)
+        ImageView icon;
         @InjectView(R.id.tv_title)
-        TextView    title;
+        TextView  title;
         @InjectView(R.id.tv_subtitle)
-        TextView    subtitle;
+        TextView  subtitle;
 
         public ViewHolder(View view) {
             ButterKnife.inject(this, view);
