@@ -16,7 +16,6 @@ out
 lib
 .DS_Store
 classes
-.gradle
 
 # Maven
 target
@@ -37,3 +36,5 @@ local.properties
 .project
 project.properties
 /.gradle
+/gradle/.gradle
+.gradle
