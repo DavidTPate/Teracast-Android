@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_list_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants">
+
+    <ImageButton
+        android:id="@+id/ib_icon"
+        android:layout_width="65dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/podcast_list_item_spacing"
+        android:layout_marginLeft="@dimen/podcast_list_item_spacing"
+        android:layout_marginTop="@dimen/podcast_list_item_spacing"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_contact_picture"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop" />
+
+    <ImageButton
+        android:id="@+id/ib_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:padding="@dimen/podcast_list_item_spacing"
+        android:src="@drawable/ic_action_playback_play"
+        android:layout_marginTop="5dp"
+        android:layout_centerVertical="true" />
+
+    <LinearLayout
+        android:id="@+id/ll_item_details"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/podcast_list_item_spacing"
+        android:layout_toRightOf="@+id/ib_icon"
+        android:orientation="vertical"
+        android:padding="@dimen/podcast_list_item_spacing"
+        android:layout_toLeftOf="@id/ib_play">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_medium" />
+
+        <TextView
+            android:id="@+id/tv_subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:textSize="@dimen/text_size_mini"
+            android:maxLines="2" />
+    </LinearLayout>
+</RelativeLayout>

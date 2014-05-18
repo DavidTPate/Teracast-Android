@@ -6,4 +6,15 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="navigation_drawer_width">240dp</dimen>
 
+    <!-- Podcast List/Grid Items -->
+    <dimen name="podcast_list_item_spacing">5dip</dimen>
+
+    <!-- Text Sizes -->
+    <dimen name="text_size_micro">8sp</dimen>
+    <dimen name="text_size_mini">10sp</dimen>
+    <dimen name="text_size_tiny">12sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_medium">18sp</dimen>
+    <dimen name="text_size_large">22sp</dimen>
+
 </resources>

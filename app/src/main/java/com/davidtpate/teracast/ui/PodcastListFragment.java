@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.davidtpate.teracast.BaseApplication;
+import com.davidtpate.teracast.adapter.PodcastAdapter;
 import com.davidtpate.teracast.ui.dummy.DummyContent;
 
 /**
@@ -55,9 +57,7 @@ public class PodcastListFragment extends ListFragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        // TODO: Change Adapter to display your content
-        setListAdapter(new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS));
+        setListAdapter(new PodcastAdapter(getActivity(), BaseApplication.getInstance().getPodcastList()));
     }
 
 

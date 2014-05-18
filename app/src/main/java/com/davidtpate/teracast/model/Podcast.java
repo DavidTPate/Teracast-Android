@@ -2,6 +2,7 @@ package com.davidtpate.teracast.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import java.util.HashMap;
 import java.util.List;
 
 public class Podcast implements Parcelable {
@@ -14,6 +15,7 @@ public class Podcast implements Parcelable {
             return new Podcast[size];
         }
     };
+    String       slug;
     String       title;
     String       subtitle;
     String       author;
@@ -22,10 +24,10 @@ public class Podcast implements Parcelable {
     String       logo;
     String       description;
     String       summary;
-    List<String> keywords;
+    HashMap<String, String> keywords;
     String       language;
     String       copyright;
-    List<String> categories;
+    HashMap<String, String> categories;
 
     private Podcast(Parcel in) {
         title = in.readString();
@@ -36,10 +38,12 @@ public class Podcast implements Parcelable {
         logo = in.readString();
         description = in.readString();
         summary = in.readString();
-        keywords = in.readArrayList(String.class.getClassLoader());
+        //TODO: Test this.
+        //keywords = in.readArrayList(String.class.getClassLoader());
         language = in.readString();
         copyright = in.readString();
-        categories = in.readArrayList(String.class.getClassLoader());
+        //TODO: Implement this.
+        //categories = in.readArrayList(String.class.getClassLoader());
     }
 
     public int describeContents() {
@@ -55,10 +59,12 @@ public class Podcast implements Parcelable {
         out.writeString(logo);
         out.writeString(description);
         out.writeString(summary);
-        out.writeList(keywords);
+        //TODO: Test this.
+        //out.writeList(keywords);
         out.writeString(language);
         out.writeString(copyright);
-        out.writeList(categories);
+        //TODO: Implement this.
+        //out.writeList(categories);
     }
 
     public String getTitle() {
@@ -125,11 +131,11 @@ public class Podcast implements Parcelable {
         this.summary = summary;
     }
 
-    public List<String> getKeywords() {
+    public HashMap<String, String> getKeywords() {
         return keywords;
     }
 
-    public void setKeywords(List<String> keywords) {
+    public void setKeywords(HashMap<String, String> keywords) {
         this.keywords = keywords;
     }
 
@@ -149,11 +155,11 @@ public class Podcast implements Parcelable {
         this.copyright = copyright;
     }
 
-    public List<String> getCategories() {
+    public HashMap<String, String> getCategories() {
         return categories;
     }
 
-    public void setCategories(List<String> categories) {
+    public void setCategories(HashMap<String, String> categories) {
         this.categories = categories;
     }
 
