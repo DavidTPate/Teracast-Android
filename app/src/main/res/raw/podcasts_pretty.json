@@ -1,0 +1,82 @@
+{
+  "startups-for-the-rest-of-us": {
+    "title": "Startups For the Rest of Us",
+    "subtitle": "Startup Tales from Two Software Entrepreneurs",
+    "author": "Rob Walling and Mike Taber",
+    "feedUrl": "http:\/\/feeds.feedburner.com\/StartupsForTheRestOfUs",
+    "explicit": "no",
+    "logo": "http:\/\/www.startupsfortherestofus.com\/wp-content\/uploads\/startup-fortherest-logo.png",
+    "description": "The podcast that helps developers be awesome at launching software products.",
+    "summary": "Mike Taber and Rob Walling come together to share their insights and experience from the perspective of developers who built their respective companies without Angel or Venture Capital funding. Together, they share the things they've learned and are still learning as independent developers.",
+    "keywords": {
+      "startups": "startups",
+      "entrepreneurs": "entrepreneurs",
+      "microisvs": "microisvs",
+      "programming": "programming",
+      "start": "start",
+      "ups": "ups",
+      "developers": "developers",
+      "business": "business",
+      "marketing": "marketing"
+    },
+    "language": "en-US",
+    "copyright": "Copyright 2013 Micropreneur Academy, LLC.",
+    "categories": {
+      "technology": "Technology",
+      "business-management-and-marketing": "Business\/Management & Marketing",
+      "business": "Business",
+      "technology-software-how-to": "Technology\/Software How-To",
+      "education-educational-technology": "Education\/Educational Technology",
+      "management-and-marketing": "Management & Marketing",
+      "software-how-to": "Software How-To",
+      "education": "Education",
+      "educational-technology": "Educational Technology"
+    }
+  },
+  "this-week-in-startups-audio": {
+    "title": "This Week in Startups - Audio",
+    "subtitle": "From infamous tech entrepreneur Jason Calacanis comes this weekly live discussion of the startup news that matters.",
+    "author": "ThisWeekIn.com",
+    "feedUrl": "http:\/\/feeds.feedburner.com\/twist-audio",
+    "explicit": "no",
+    "logo": "http:\/\/www.thisweekin.com\/featured\/FeatureBox_Startups.jpg",
+    "description": "Supporting entrepreneurs & inspiring innovation.",
+    "summary": "Entrepreneur Jason Calacanis and a rotating group of guest experts bring you this weekly take on the best, worst, most outrageous and interesting stories from the world of Web companies.  Calacanis, a podcasting pioneer, gives you an insider's look at what's happening in the tech industry with his trademark blunt style and good humor.  Looking to start your own company?  Need strategies for improving your business or motivating your team?  Just want to catch up on what's happening in Silicon Valley and beyond?  Your journey begins here.",
+    "keywords": {
+      "jason": "Jason",
+      "calacanis": "Calacanis",
+      "technology": "Technology",
+      "startups": "Startups"
+    },
+    "language": "en-US",
+    "copyright": "ThisWeekIn.com",
+    "categories": {
+      "business-business-news": "Business\/Business News",
+      "business": "Business",
+      "business-news": "Business News"
+    }
+  },
+  "this-week-in-startups-video": {
+    "title": "This Week in Startups - Video",
+    "subtitle": "From infamous tech entrepreneur Jason Calacanis comes this weekly live discussion of the startup news that matters.",
+    "author": "ThisWeekIn.com",
+    "feedUrl": "http:\/\/feeds.feedburner.com\/twistvid",
+    "explicit": "no",
+    "logo": "http:\/\/www.thisweekin.com\/featured\/FeatureBox_Startups.jpg",
+    "description": "Supporting entrepreneurs & inspiring innovation.",
+    "summary": "Entrepreneur Jason Calacanis and a rotating group of guest experts bring you this weekly take on the best, worst, most outrageous and interesting stories from the world of Web companies.  Calacanis, a podcasting pioneer, gives you an insider's look at what's happening in the tech industry with his trademark blunt style and good humor.  Looking to start your own company?  Need strategies for improving your business or motivating your team?  Just want to catch up on what's happening in Silicon Valley and beyond?  Your journey begins here.",
+    "keywords": {
+      "jason": "Jason",
+      "calacanis": "Calacanis",
+      "technology": "Technology",
+      "startups": "Startups"
+    },
+    "language": "en-US",
+    "copyright": "ThisWeekIn.com",
+    "categories": {
+      "business-business-news": "Business\/Business News",
+      "business": "Business",
+      "business-news": "Business News"
+    }
+  }
+}

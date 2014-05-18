@@ -16,6 +16,7 @@ out
 lib
 .DS_Store
 classes
+.gradle
 
 # Maven
 target
