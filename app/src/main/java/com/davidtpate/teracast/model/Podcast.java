@@ -5,7 +5,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -19,19 +18,19 @@ public class Podcast implements Parcelable {
             return new Podcast[size];
         }
     };
-    String       slug;
-    String       title;
-    String       subtitle;
-    String       author;
-    String       feedUrl;
-    String       explcit;
-    String       logo;
-    String       description;
-    String       summary;
-    HashMap<String, String> keywords;
-    String       language;
-    String       copyright;
-    HashMap<String, String> categories;
+    String                   title;
+    String                   subtitle;
+    String                   author;
+    String                   feedUrl;
+    String                   explcit;
+    String                   logo;
+    String                   description;
+    String                   summary;
+    HashMap<String, String>  keywords;
+    String                   language;
+    String                   copyright;
+    HashMap<String, String>  categories;
+    LinkedHashMap<String, Episode> episodes;
 
     private Podcast(Parcel in) {
         title = in.readString();
@@ -65,6 +64,16 @@ public class Podcast implements Parcelable {
 
             categories.put(key, categoryBundle.getString(key));
         }
+
+        Bundle episodeBundle = in.readBundle();
+        Set<String> episodeKeySet = episodeBundle.keySet();
+        for (String key : episodeKeySet) {
+            if (episodes == null) {
+                episodes = new LinkedHashMap<String, Episode>();
+            }
+
+            episodes.put(key, episodeBundle.<Episode>getParcelable(key));
+        }
     }
 
     public int describeContents() {
@@ -91,10 +100,16 @@ public class Podcast implements Parcelable {
         out.writeString(copyright);
 
         Bundle categoryBundle = new Bundle();
-        for (Map.Entry<String, String> categoryEntry : keywords.entrySet()) {
+        for (Map.Entry<String, String> categoryEntry : categories.entrySet()) {
             categoryBundle.putString(categoryEntry.getKey(), categoryEntry.getValue());
         }
         out.writeBundle(categoryBundle);
+
+        Bundle episodeBundle = new Bundle();
+        for (Map.Entry<String, Episode> episodeEntry : episodes.entrySet()) {
+            episodeBundle.putParcelable(episodeEntry.getKey(), episodeEntry.getValue());
+        }
+        out.writeBundle(episodeBundle);
     }
 
     public String getTitle() {
@@ -193,6 +208,33 @@ public class Podcast implements Parcelable {
         this.categories = categories;
     }
 
+    public LinkedHashMap<String, Episode> getEpisodes() {
+        return episodes;
+    }
+
+    public void setEpisodes(LinkedHashMap<String, Episode> episodes) {
+        this.episodes = episodes;
+    }
+
+    @Override
+    public String toString() {
+        return "Podcast{" +
+               "title='" + title + '\'' +
+               ", subtitle='" + subtitle + '\'' +
+               ", author='" + author + '\'' +
+               ", feedUrl='" + feedUrl + '\'' +
+               ", explcit='" + explcit + '\'' +
+               ", logo='" + logo + '\'' +
+               ", description='" + description + '\'' +
+               ", summary='" + summary + '\'' +
+               ", keywords=" + keywords +
+               ", language='" + language + '\'' +
+               ", copyright='" + copyright + '\'' +
+               ", categories=" + categories +
+               ", episodes=" + episodes +
+               '}';
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -214,6 +256,9 @@ public class Podcast implements Parcelable {
             return false;
         }
         if (description != null ? !description.equals(podcast.description) : podcast.description != null) {
+            return false;
+        }
+        if (episodes != null ? !episodes.equals(podcast.episodes) : podcast.episodes != null) {
             return false;
         }
         if (explcit != null ? !explcit.equals(podcast.explcit) : podcast.explcit != null) {
@@ -258,24 +303,7 @@ public class Podcast implements Parcelable {
         result = 31 * result + (language != null ? language.hashCode() : 0);
         result = 31 * result + (copyright != null ? copyright.hashCode() : 0);
         result = 31 * result + (categories != null ? categories.hashCode() : 0);
+        result = 31 * result + (episodes != null ? episodes.hashCode() : 0);
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "Podcast{" +
-               "title='" + title + '\'' +
-               ", subtitle='" + subtitle + '\'' +
-               ", author='" + author + '\'' +
-               ", feedUrl='" + feedUrl + '\'' +
-               ", explcit='" + explcit + '\'' +
-               ", logo='" + logo + '\'' +
-               ", description='" + description + '\'' +
-               ", summary='" + summary + '\'' +
-               ", keywords=" + keywords +
-               ", language='" + language + '\'' +
-               ", copyright='" + copyright + '\'' +
-               ", categories=" + categories +
-               '}';
     }
 }

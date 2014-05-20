@@ -5,25 +5,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import com.davidtpate.teracast.R;
-import com.davidtpate.teracast.model.Podcast;
-import com.davidtpate.teracast.model.PodcastList;
-import com.squareup.picasso.Picasso;
+import com.davidtpate.teracast.model.Episode;
+import java.util.LinkedHashMap;
 
-public class PodcastAdapter extends BaseAdapter implements KeyAdapter {
-    private Context mContext;
-    private PodcastList mPodcastList;
-    private String[] mKeys;
+public class EpisodeAdapter extends BaseAdapter implements KeyAdapter {
+    private Context  mContext;
+    private LinkedHashMap<String, Episode> mEpisodeList;
+    private String[]      mKeys;
 
-    public PodcastAdapter(Context context, PodcastList podcastList) {
+    public EpisodeAdapter(Context context, LinkedHashMap<String, Episode> episodeList) {
         mContext = context;
-        mPodcastList = podcastList;
-        if (mPodcastList != null && mPodcastList.getPodcastMap() != null) {
-            mKeys = mPodcastList.getPodcastMap().keySet().toArray(new String[mPodcastList.getPodcastMap().size()]);
+        mEpisodeList = episodeList;
+        if (mEpisodeList != null) {
+            mKeys = mEpisodeList.keySet().toArray(new String[mEpisodeList.size()]);
         }
     }
 
@@ -34,10 +33,10 @@ public class PodcastAdapter extends BaseAdapter implements KeyAdapter {
      */
     @Override
     public int getCount() {
-        if (mPodcastList == null || mPodcastList.getPodcastMap() == null) {
+        if (mEpisodeList == null || mEpisodeList == null) {
             return 0;
         }
-        return mPodcastList.getPodcastMap().size();
+        return mEpisodeList.size();
     }
 
     /**
@@ -50,11 +49,11 @@ public class PodcastAdapter extends BaseAdapter implements KeyAdapter {
      * @return The data at the specified position.
      */
     @Override
-    public Podcast getItem(int position) {
-        if (mPodcastList == null || mPodcastList.getPodcastMap() == null || mKeys == null) {
+    public Episode getItem(int position) {
+        if (mEpisodeList == null || mEpisodeList == null || mKeys == null) {
             return null;
         }
-        return mPodcastList.getPodcastMap().get(mKeys[position]);
+        return mEpisodeList.get(mKeys[position]);
     }
 
     /**
@@ -94,7 +93,7 @@ public class PodcastAdapter extends BaseAdapter implements KeyAdapter {
      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Podcast podcast = getItem(position);
+        Episode episode = getItem(position);
         ViewHolder holder = null;
 
         if (convertView != null) {
@@ -110,9 +109,8 @@ public class PodcastAdapter extends BaseAdapter implements KeyAdapter {
             convertView.setTag(holder);
         }
 
-        Picasso.with(mContext).load(podcast.getLogo()).into(holder.icon);
-        holder.title.setText(podcast.getTitle());
-        holder.subtitle.setText(podcast.getDescription());
+        holder.title.setText(episode.getTitle());
+        holder.subtitle.setText(episode.getDescription());
 
         return convertView;
     }
@@ -126,12 +124,12 @@ public class PodcastAdapter extends BaseAdapter implements KeyAdapter {
     }
 
     static class ViewHolder {
-        @InjectView(R.id.iv_icon)
-        ImageView icon;
         @InjectView(R.id.tv_title)
-        TextView  title;
+        TextView   title;
         @InjectView(R.id.tv_subtitle)
-        TextView  subtitle;
+        TextView    subtitle;
+        @InjectView(R.id.ib_play)
+        ImageButton play;
 
         public ViewHolder(View view) {
             ButterKnife.inject(this, view);

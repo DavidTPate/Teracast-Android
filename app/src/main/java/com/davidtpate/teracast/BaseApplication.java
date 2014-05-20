@@ -55,7 +55,7 @@ public class BaseApplication extends Application {
         // Perform injection
         Injector.init(getRootModule(), this);
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(getResources().openRawResource(R.raw.podcasts)));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(getResources().openRawResource(R.raw.podcasts_giant)));
         String fakeJson = "";
         String line;
         try

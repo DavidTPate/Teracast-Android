@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_list_item"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical"
+    android:padding="@dimen/podcast_list_item_spacing">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/ib_play"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:textSize="@dimen/text_size_medium" />
+
+    <TextView
+        android:id="@+id/tv_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title"
+        android:layout_toLeftOf="@+id/ib_play"
+        android:ellipsize="marquee"
+        android:maxLines="2"
+        android:textSize="@dimen/text_size_small" />
+
+    <ImageButton
+        android:id="@+id/ib_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="5dp"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:padding="@dimen/podcast_list_item_spacing"/>
+
+</RelativeLayout>
